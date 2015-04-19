@@ -75,6 +75,13 @@ Operating Systems:
 
 ```
 
+Storage can be cloned from existing disk image based on the UUID of the image:
+
+```
+storage_devices = [
+			Storage(uuid = "00000000-1111-2222-3333-444444444444", title="Foo", size=10),
+			]
+```
 
 Please refer to the [API documentation](https://www.upcloud.com/static/downloads/upcloud-apidoc-1.1.1.pdf) for the allowed Server attributes.
 

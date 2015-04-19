@@ -59,7 +59,10 @@ class Storage():
 			body = dict()
 
 			# clone from public template OR create empty storage
-			if self.os:
+			
+			if self.uuid:
+				body["action"] = "clone"
+			elif self.os:
 				body["action"] = "clone"
 			else:
 				body["action"] = "create"
@@ -84,7 +87,9 @@ class Storage():
 				body["size"] = self.size
 
 			# figure out public template (CDROMS not yet supported)
-			if body["action"] == "attach" or body["action"] == "clone":
+			if self.uuid:
+				body["storage"] = self.uuid
+			elif body["action"] == "attach" or body["action"] == "clone":
 				body["storage"] = OperatingSystems.get_OS_UUID(self.os)
 
 			# optionals
